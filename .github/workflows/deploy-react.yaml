@@ -22,7 +22,7 @@ jobs:
         # リポジトリのコンテキストが必要な場合に備えて含めています。
 
       - name: Download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-output # build-react.yaml でアップロードしたアーティファクト名と一致させる
           path: ./dist # ダウンロードしたアーティファクトを配置するパス
