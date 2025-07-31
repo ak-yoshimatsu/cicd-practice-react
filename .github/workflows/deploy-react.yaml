@@ -22,6 +22,8 @@ jobs:
         with:
           name: build-output
           path: ./build
+          # ここに run-id を追加します。トリガーとなったワークフローのIDを指定します。
+          run-id: ${{ github.event.workflow_run.id }} 
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1 # このアクションは通常v1で問題ありません
