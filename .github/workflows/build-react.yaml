@@ -23,7 +23,7 @@ jobs:
         run: npm run build
 
       - name: Upload build artifact # このステップを追加します
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-output # デプロイワークフローでダウンロードするアーティファクト名
           path: dist # Reactのビルド出力ディレクトリ (通常は 'build' または 'dist')
