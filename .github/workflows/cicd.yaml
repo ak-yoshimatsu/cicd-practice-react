@@ -5,6 +5,10 @@ on:
     branches:
       - main # mainへpushされた時
 
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -47,9 +51,10 @@ jobs:
       - name: Configure AWS credentials # ここを v3 に更新します
         uses: aws-actions/configure-aws-credentials@v3 # v3 に変更
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: arn:aws:iam::867454209349:role/udemy-github-actions-frontend-deployment-role
+          # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
 
       - name: Deploy to S3 using AWS CLI
         run: |
